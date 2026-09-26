@@ -242,7 +242,7 @@ dialog.lb::backdrop { background: rgb(10 11 12 / .92); }
         </ul>
         <div class="cta">
           <a class="btn primary" href="#projects"><span lang="en">See projects</span><span lang="es">Ver proyectos</span> ↓</a>
-          <a class="btn" href="mailto:f.b.carlos.17@gmail.com"><span lang="en">Get in touch</span><span lang="es">Contactar</span></a>
+          <a class="btn js-mail" href="#contact"><span lang="en">Get in touch</span><span lang="es">Contactar</span></a>
         </div>
       </div>
       <figure>
@@ -321,7 +321,7 @@ dialog.lb::backdrop { background: rgb(10 11 12 / .92); }
     <div class="wrap">
       <h2><span lang="en">Let’s talk<span>.</span></span><span lang="es">Hablemos<span>.</span></span></h2>
       <div class="cta">
-        <a class="btn primary" href="mailto:f.b.carlos.17@gmail.com">f.b.carlos.17@gmail.com</a>
+        <a class="btn primary js-mail js-mail-text" href="#contact">email</a>
         <a class="btn" href="https://linkedin.com/in/carlos-fuentes-brinquis" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
       <div class="foot mono"><span>Carlos Fuentes · Zaragoza, Spain</span><span>© 2026</span></div>
@@ -590,6 +590,16 @@ document.getElementById("themeBtn").onclick = () => {
   const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
   root.dataset.theme = dark ? "light" : "dark"; store.set("theme", root.dataset.theme);
 };
+</script>
+<script>
+// Email assembled at runtime so scrapers reading raw HTML do not find it
+(function () {
+  var addr = ["f.b.carlos.17", "gmail.com"].join("@");
+  document.querySelectorAll(".js-mail").forEach(function (a) {
+    a.href = "mailto:" + addr;
+    if (a.classList.contains("js-mail-text")) a.textContent = addr;
+  });
+})();
 </script>
 </body>
 </html>
