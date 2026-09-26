@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carlos Fuentes — Portfolio</title>
+<meta name="description" content="Engineering portfolio of Carlos Fuentes, mechanical engineer: suspension, structural and powertrain parts designed and built for Motostudent Unizar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f3f1ec;
+  --surface: #fbfaf7;
+  --ink: #16181b;
+  --muted: #5b5f66;
+  --rule: #d8d3c8;
+  --accent: #c8231b;
+  --accent-ink: #ffffff;
+  --tag-bg: #e7e3da;
+  --shadow: 0 1px 2px rgb(0 0 0 / .06), 0 6px 24px rgb(0 0 0 / .06);
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --max: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111315; --surface: #181b1e; --ink: #ecebe6; --muted: #9da1a8;
+    --rule: #2c3035; --accent: #ff4b3e; --accent-ink: #111315; --tag-bg: #23272b;
+    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 28px rgb(0 0 0 / .35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111315; --surface: #181b1e; --ink: #ecebe6; --muted: #9da1a8;
+  --rule: #2c3035; --accent: #ff4b3e; --accent-ink: #111315; --tag-bg: #23272b;
+  --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 28px rgb(0 0 0 / .35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+
+/* language switch: text for the inactive language is hidden */
+html[data-lang="en"] [lang="es"], html[data-lang="es"] [lang="en"] { display: none; }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; align-items: center; gap: 24px; height: 56px; }
+.bar .id { font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; }
+.bar .id span { color: var(--accent); }
+.bar nav { display: flex; gap: 20px; margin-left: auto; }
+.bar nav a { text-decoration: none; color: var(--muted); }
+.bar nav a:hover { color: var(--ink); }
+.toggles { display: flex; gap: 6px; }
+.toggles button {
+  font: 500 12px/1 var(--mono); letter-spacing: .06em; color: var(--ink);
+  background: transparent; border: 1px solid var(--rule); border-radius: 4px;
+  height: 30px; min-width: 38px; padding: 0 8px; cursor: pointer;
+}
+.toggles button:hover { border-color: var(--ink); }
+@media (max-width: 720px) { .bar nav { display: none; } .toggles { margin-left: auto; } }
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(40px, 7vw, 88px) 0 48px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.kicker { color: var(--accent); margin: 0 0 14px; }
+h1 {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(56px, 9vw, 112px); line-height: .88; letter-spacing: -.005em; margin: 0 0 22px;
+}
+.lead { font-size: clamp(17px, 1.6vw, 19px); color: var(--muted); margin: 0 0 28px; max-width: 34em; }
+.lead strong { color: var(--ink); font-weight: 500; }
+.facts { list-style: none; margin: 0 0 30px; padding: 0; border-top: 1px solid var(--rule); }
+.facts li { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+.facts .mono { color: var(--muted); padding-top: 3px; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px;
+  font: 500 14px/1 var(--sans); text-decoration: none; border-radius: 4px; border: 1px solid var(--ink);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn:hover { filter: brightness(1.08); }
+.hero figure { margin: 0; }
+.hero figure .frame { background: #fff; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); cursor: zoom-in; }
+.hero figcaption { margin-top: 10px; color: var(--muted); }
+@media (max-width: 880px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .facts li { grid-template-columns: 1fr; gap: 0; } }
+
+/* ---------- section heads ---------- */
+.section { padding: 56px 0; border-top: 1px solid var(--rule); }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+.section-head h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(32px, 4vw, 44px); line-height: 1; margin: 0; }
+.section-head .mono { color: var(--muted); }
+
+/* ---------- project index ---------- */
+.index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.index a {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) 200px 140px; gap: 16px; align-items: baseline;
+  padding: 14px 4px; border-bottom: 1px solid var(--rule); text-decoration: none; transition: background .15s;
+}
+.index a:hover { background: var(--surface); }
+.index a:hover .t { color: var(--accent); }
+.index .n { font-family: var(--mono); color: var(--accent); font-size: 13px; }
+.index .t { font-family: var(--display); font-weight: 600; font-size: 24px; text-transform: uppercase; line-height: 1.1; }
+.index .d, .index .b { color: var(--muted); }
+@media (max-width: 720px) { .index a { grid-template-columns: 40px minmax(0, 1fr); } .index .d, .index .b { display: none; } }
+
+/* ---------- projects ---------- */
+.project { padding: 64px 0; border-top: 1px solid var(--rule); }
+.p-head { display: grid; grid-template-columns: auto 1fr; gap: 0 22px; align-items: end; margin-bottom: 26px; }
+.p-num { font-family: var(--display); font-weight: 700; font-size: clamp(64px, 9vw, 104px); line-height: .8; color: var(--accent); }
+.p-head h3 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(30px, 4.2vw, 48px); line-height: .95; margin: 0 0 8px; }
+.p-head .role { color: var(--muted); margin: 0; }
+.p-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.p-text p { margin: 0 0 16px; }
+.p-text ul { margin: 0 0 20px; padding-left: 18px; }
+.p-text li { margin-bottom: 6px; }
+.p-text li::marker { color: var(--accent); }
+.meta { display: grid; gap: 10px; margin: 0; padding: 16px 0 0; border-top: 1px solid var(--rule); }
+.meta div { display: grid; grid-template-columns: 90px 1fr; gap: 10px; }
+.meta dt { color: var(--muted); padding-top: 2px; }
+.meta dd { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 12px/1 var(--sans); background: var(--tag-bg); padding: 6px 8px; border-radius: 3px; }
+@media (max-width: 880px) { .p-body { grid-template-columns: minmax(0, 1fr); } .p-text { order: 2; } }
+
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.gallery figure { margin: 0; position: relative; }
+.gallery figure:first-child { grid-column: span 2; grid-row: span 2; }
+.gallery .thumb {
+  display: block; width: 100%; padding: 0; border: 1px solid var(--rule); border-radius: 5px; overflow: hidden;
+  background: #fff; cursor: zoom-in; aspect-ratio: 4 / 3;
+}
+.gallery figure:first-child { align-self: start; }
+.gallery img { width: 100%; height: 100% !important; object-fit: cover; transition: transform .35s ease; }
+.gallery .thumb:hover img { transform: scale(1.03); }
+.gallery .thumb:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tag {
+  position: absolute; top: 8px; left: 8px; z-index: 1; pointer-events: none;
+  font: 500 10.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+  background: var(--ink); color: var(--bg); padding: 5px 6px; border-radius: 2px;
+}
+.tag.cad { background: #2f5bd3; color: #fff; }
+.gallery figcaption { font-size: 13px; color: var(--muted); line-height: 1.35; margin-top: 6px; min-height: 20px; }
+@media (max-width: 560px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery figure:first-child { grid-column: span 2; grid-row: auto; }
+  .gallery figure:first-child .thumb { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+}
+
+/* ---------- experience / education ---------- */
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 22px; }
+.card .when { color: var(--accent); margin: 0 0 6px; }
+.card h4 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 26px; line-height: 1; margin: 0 0 4px; }
+.card .where { color: var(--muted); margin: 0 0 12px; font-size: 15px; }
+.card ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.card li { margin-bottom: 5px; }
+.card li::marker { color: var(--accent); }
+.card p { margin: 0; font-size: 15px; }
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.skills h5 { margin: 0 0 8px; color: var(--muted); font-weight: 500; }
+.skills div { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+.skills section { border-top: 2px solid var(--ink); padding-top: 12px; }
+@media (max-width: 880px) { .cols { grid-template-columns: 1fr; } .skills { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- contact ---------- */
+.contact { padding: 72px 0 56px; border-top: 1px solid var(--ink); }
+.contact h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: clamp(44px, 7vw, 88px); line-height: .9; margin: 0 0 24px; }
+.contact h2 span { color: var(--accent); }
+.foot { margin-top: 56px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- lightbox ---------- */
+dialog.lb {
+  border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh;
+  width: 100vw; height: 100vh; color: #eee;
+}
+dialog.lb::backdrop { background: rgb(10 11 12 / .92); }
+.lb-inner { height: 100%; display: grid; grid-template-rows: 1fr auto; padding: 56px 16px 16px; }
+.lb-img { min-height: 0; display: flex; align-items: center; justify-content: center; }
+.lb-img img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 3px; background: #fff; }
+.lb-cap { text-align: center; padding: 14px 60px 4px; font-size: 14px; color: #cfcfcf; }
+.lb-cap .mono { color: #ff6a5f; margin-right: 8px; }
+.lb button {
+  position: fixed; background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .2); color: #fff;
+  width: 44px; height: 44px; border-radius: 50%; font: 400 20px/1 var(--sans); cursor: pointer;
+}
+.lb button:hover { background: rgb(255 255 255 / .18); }
+.lb .close { top: 12px; right: 12px; }
+.lb .prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lb .next { right: 12px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 560px) { .lb .prev, .lb .next { top: auto; bottom: 12px; transform: none; } .lb-inner { padding-bottom: 64px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .gallery img { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="id" href="#top">Carlos Fuentes<span>.</span></a>
+    <nav class="mono">
+      <a href="#projects"><span lang="en">Projects</span><span lang="es">Proyectos</span></a>
+      <a href="#experience"><span lang="en">Experience</span><span lang="es">Experiencia</span></a>
+      <a href="#contact"><span lang="en">Contact</span><span lang="es">Contacto</span></a>
+    </nav>
+    <div class="toggles">
+      <button id="langBtn" type="button" aria-label="Switch language">ES</button>
+      <button id="themeBtn" type="button" aria-label="Toggle dark mode">◐</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker mono"><span lang="en">Mechanical Engineer · Motorsport</span><span lang="es">Ingeniero Mecánico · Motorsport</span></p>
+        <h1>Carlos<br>Fuentes</h1>
+        <p class="lead">
+          <span lang="en">I design and build race-vehicle parts. As <strong>Head of Dynamics at Motostudent Unizar</strong> I defined the suspension geometry of two competition motorcycles, and I have designed structural, powertrain and composite parts that made it from CAD to the track.</span>
+          <span lang="es">Diseño y fabrico piezas para vehículos de competición. Como <strong>Head of Dynamics en Motostudent Unizar</strong> definí la geometría de suspensión de dos motos de competición, y he diseñado piezas estructurales, de transmisión y de composite que han pasado del CAD a la pista.</span>
+        </p>
+        <ul class="facts">
+          <li><span class="mono">Motostudent Unizar</span><span lang="en">President · Head of Dynamics · Structural &amp; Powertrain</span><span lang="es">Presidente · Head of Dynamics · Estructuras y Powertrain</span></li>
+          <li><span class="mono">Campos Racing</span><span lang="en">Intern, CAD Design &amp; Instrumentation (F2 / F3 / EC3)</span><span lang="es">Prácticas, Diseño CAD e Instrumentación (F2 / F3 / EC3)</span></li>
+          <li><span class="mono">Escudería Faraón</span><span lang="en">Trackside support, GT racing</span><span lang="es">Soporte en pista, GT</span></li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="#projects"><span lang="en">See projects</span><span lang="es">Ver proyectos</span> ↓</a>
+          <a class="btn" href="mailto:f.b.carlos.17@gmail.com"><span lang="en">Get in touch</span><span lang="es">Contactar</span></a>
+        </div>
+      </div>
+      <figure>
+        <div class="frame" data-lb="hero"><img src="img/cad_bike_hero.jpg" alt="CAD assembly of the Motostudent electric motorcycle" width="1152" height="859"></div>
+        <figcaption class="mono"><span lang="en">Electric prototype — full-vehicle CAD assembly (Solidworks)</span><span lang="es">Prototipo eléctrico — ensamblaje CAD completo (Solidworks)</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head"><h2><span lang="en">Projects</span><span lang="es">Proyectos</span></h2><span class="mono">Motostudent Unizar · 2024–2026</span></div>
+      <ol class="index" id="index"></ol>
+    </div>
+  </section>
+
+  <div id="projectList"></div>
+
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head"><h2><span lang="en">Experience &amp; education</span><span lang="es">Experiencia y formación</span></h2></div>
+      <div class="cols">
+        <article class="card">
+          <p class="when mono">2025 – 2026</p>
+          <h4>Campos Racing</h4>
+          <p class="where"><span lang="en">Intern, CAD Design &amp; Instrumentation</span><span lang="es">Prácticas, Diseño CAD e Instrumentación</span></p>
+          <ul lang="en">
+            <li>Designed and assembled a portable sensor calibrator for the F2 team; further units were produced for the F3 and EC3 teams. Wrote its assembly manual.</li>
+            <li>Designed the enclosure for the NAS system used by the F2 team, and a calibration tool for the F2 steering-wheel sensor.</li>
+            <li>Trackside at Eurocup3 race weekends (Jarama, Montmeló).</li>
+          </ul>
+          <ul lang="es">
+            <li>Diseñé y monté un calibrador portátil de sensores para el equipo de F2; se fabricaron más unidades para F3 y EC3. Redacté su manual de montaje.</li>
+            <li>Diseñé la caja del sistema NAS que usa el equipo de F2 y una herramienta de calibración para el sensor del volante de F2.</li>
+            <li>Experiencia en pista en fines de semana de Eurocup3 (Jarama, Montmeló).</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="when mono"><span lang="en">2026 – present</span><span lang="es">2026 – actualidad</span></p>
+          <h4>Escudería Faraón</h4>
+          <p class="where"><span lang="en">Trackside support</span><span lang="es">Soporte en pista</span></p>
+          <ul lang="en">
+            <li>Tyre pressures, fuel consumption and car vitals during race weekends; data extraction and analysis.</li>
+            <li>Radio communication with drivers in qualifying and races.</li>
+            <li>Porsche 911 GT3 Cup (GT-CET GPX and Global class champions, 12H Spa), now Mercedes-AMG GT4.</li>
+          </ul>
+          <ul lang="es">
+            <li>Presiones de neumáticos, consumo y parámetros del coche durante los fines de semana de carrera; extracción y análisis de datos.</li>
+            <li>Comunicación por radio con los pilotos en clasificación y carrera.</li>
+            <li>Porsche 911 GT3 Cup (campeones GT-CET GPX y clase Global, 12H Spa); ahora Mercedes-AMG GT4.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="when mono">2025 – 2026</p>
+          <h4><span lang="en">MSc Motorsport Engineering</span><span lang="es">Máster en Ingeniería de Competición</span></h4>
+          <p class="where">Campos Racing &amp; Florida Universitaria · Valencia</p>
+          <p><span lang="en">Thesis: “Study, revision and expansion of balance metrics.”</span><span lang="es">TFM: «Estudio, revisión y ampliación de métricas de balance».</span></p>
+        </article>
+        <article class="card">
+          <p class="when mono">2019 – 2026</p>
+          <h4><span lang="en">BSc Mechanical Engineering</span><span lang="es">Grado en Ingeniería Mecánica</span></h4>
+          <p class="where"><span lang="en">University of Zaragoza</span><span lang="es">Universidad de Zaragoza</span></p>
+          <p><span lang="en">Thesis: “Design of a progressive suspension system, swingarm and other components for an electric racing motorcycle (Motostudent VIII).”</span><span lang="es">TFG: «Diseño de un sistema de suspensión progresiva, basculante y otros componentes para una moto eléctrica de competición (Motostudent VIII)».</span></p>
+        </article>
+      </div>
+      <div class="skills">
+        <section><h5 class="mono">CAD</h5><div><span class="chip">Solidworks</span><span class="chip">Catia</span><span class="chip">Fusion 360</span></div></section>
+        <section><h5 class="mono"><span lang="en">Analysis</span><span lang="es">Análisis</span></h5><div><span class="chip">Ansys (FEA)</span><span class="chip" lang="en">Suspension kinematics</span><span class="chip" lang="es">Cinemática de suspensión</span></div></section>
+        <section><h5 class="mono"><span lang="en">Manufacturing</span><span lang="es">Fabricación</span></h5><div><span class="chip" lang="en">Composite moulds</span><span class="chip" lang="es">Moldes de composite</span><span class="chip" lang="en">Welding jigs</span><span class="chip" lang="es">Utillajes de soldadura</span><span class="chip" lang="en">3D printing</span><span class="chip" lang="es">Impresión 3D</span></div></section>
+        <section><h5 class="mono"><span lang="en">Languages</span><span lang="es">Idiomas</span></h5><div><span class="chip" lang="en">Spanish — native</span><span class="chip" lang="es">Español — nativo</span><span class="chip" lang="en">English — C1</span><span class="chip" lang="es">Inglés — C1</span><span class="chip" lang="en">French — A2</span><span class="chip" lang="es">Francés — A2</span></div></section>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2><span lang="en">Let’s talk<span>.</span></span><span lang="es">Hablemos<span>.</span></span></h2>
+      <div class="cta">
+        <a class="btn primary" href="mailto:f.b.carlos.17@gmail.com">f.b.carlos.17@gmail.com</a>
+        <a class="btn" href="https://linkedin.com/in/carlos-fuentes-brinquis" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <div class="foot mono"><span>Carlos Fuentes · Zaragoza, Spain</span><span>© 2026</span></div>
+    </div>
+  </section>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Image viewer">
+  <div class="lb-inner">
+    <div class="lb-img"><img id="lbImg" alt=""></div>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+  <button class="close" type="button" aria-label="Close">✕</button>
+  <button class="prev" type="button" aria-label="Previous">‹</button>
+  <button class="next" type="button" aria-label="Next">›</button>
+</dialog>
+
+<script>
+/* =====================================================================
+   PROJECT CONTENT — edit here to add/change projects and photos.
+   Each photo: [file in img/, tag, English caption, Spanish caption]
+   Tags: CAD, PART, PROTOTYPE, PROCESS
+   ===================================================================== */
+const PROJECTS = [
+  {
+    id: "suspension",
+    title: { en: "Rear suspension linkage", es: "Bieletas de suspensión trasera" },
+    role: { en: "Head of Dynamics · petrol & electric bikes", es: "Head of Dynamics · moto de combustión y eléctrica" },
+    dept: { en: "Dynamics", es: "Dinámica" },
+    text: {
+      en: `<p>I defined the rear suspension geometry for both of the team’s competition motorcycles: a progressive linkage — swingarm, rocker and tie-rods — driving a single shock.</p>
+<ul><li>Linkage geometry chosen to give a rising-rate wheel rate over the travel.</li>
+<li>The full-vehicle CAD assembly carries a configuration for each load case — sag, full bump, full droop, braking, maximum acceleration and cornering — so clearances and linkage positions are checked across the whole travel.</li>
+<li>This work continues in my Bachelor’s thesis: a progressive suspension, swingarm and other components for the electric bike.</li></ul>`,
+      es: `<p>Definí la geometría de la suspensión trasera de las dos motos de competición del equipo: un bielismo progresivo — basculante, balancín y bieletas — que acciona un monoamortiguador.</p>
+<ul><li>Geometría de bieletas elegida para dar una rigidez en rueda progresiva a lo largo del recorrido.</li>
+<li>El ensamblaje CAD completo tiene una configuración por cada caso de carga — sag, compresión máxima, extensión máxima, frenada, aceleración máxima y curva — para comprobar holguras y posición de las bieletas en todo el recorrido.</li>
+<li>Este trabajo continúa en mi TFG: suspensión progresiva, basculante y otros componentes para la moto eléctrica.</li></ul>`
+    },
+    tools: ["Solidworks"],
+    photos: [
+      ["rocker_petrol_detail.jpg", "PART", "Rocker and tie-rod mounted on the petrol bike", "Balancín y bieleta montados en la moto de combustión"],
+      ["cad_configs.jpg", "CAD", "Assembly configurations per load case: sag, full bump, droop, braking, acceleration, cornering", "Configuraciones del ensamblaje por caso de carga: sag, compresión, extensión, frenada, aceleración, curva"],
+      ["rocker_electric.jpg", "PART", "Electric bike rocker", "Balancín de la moto eléctrica"],
+      ["rocker_petrol.jpg", "PART", "Petrol bike linkage with the shock", "Bielismo de la moto de combustión con el amortiguador"],
+      ["rocker_electric_side.jpg", "PART", "Electric bike linkage, side view", "Bielismo de la moto eléctrica, vista lateral"]
+    ]
+  },
+  {
+    id: "transmission",
+    title: { en: "Sprocket carriers & final drive", es: "Portacoronas y transmisión final" },
+    role: { en: "Powertrain department · petrol & electric bikes", es: "Departamento de Powertrain · moto de combustión y eléctrica" },
+    dept: { en: "Powertrain", es: "Powertrain" },
+    text: {
+      en: `<p>I designed the rear sprocket carriers for both bikes, set the transmission gear ratios, and defined the weight-reduction machining of the sprockets.</p>
+<ul><li>Carriers were 3D-printed first to check the fit on the wheel before machining; the petrol-bike carrier went through three iterations.</li>
+<li>Alternative primary and secondary ratios (e.g. 17:37 and 17:41) are modelled in the assembly so each option can be checked for chain line and clearance.</li></ul>`,
+      es: `<p>Diseñé los portacoronas de las dos motos, definí las relaciones de transmisión y el mecanizado de aligeramiento de las coronas.</p>
+<ul><li>Los portacoronas se imprimieron primero en 3D para comprobar el ajuste en la llanta antes de mecanizar; el de la moto de combustión pasó por tres iteraciones.</li>
+<li>Las relaciones primarias y secundarias alternativas (p. ej. 17:37 y 17:41) están modeladas en el ensamblaje para comprobar la línea de cadena y las holguras de cada opción.</li></ul>`
+    },
+    tools: ["Solidworks", "CNC", "3D printing"],
+    photos: [
+      ["carrier_sprocket_front.jpg", "PART", "Machined carrier with the lightened sprocket", "Portacoronas mecanizado con la corona aligerada"],
+      ["carrier_petrol_iterations.jpg", "PROTOTYPE", "Petrol-bike carrier: three printed iterations", "Portacoronas de combustión: tres iteraciones impresas"],
+      ["wheel_electric.jpg", "PART", "Electric bike rear wheel with carrier and sprocket", "Rueda trasera de la eléctrica con portacoronas y corona"],
+      ["carrier_wheel.jpg", "PART", "Carrier seated on the wheel hub", "Portacoronas asentado en el buje de la llanta"],
+      ["carrier_sprocket_back.jpg", "PART", "Sprocket weight-reduction pockets", "Vaciados de aligeramiento de la corona"],
+      ["carrier_prototype.jpg", "PROTOTYPE", "Printed fit-check prototype", "Prototipo impreso para comprobar el ajuste"],
+      ["carrier_petrol_mounted.jpg", "PART", "Final drive fitted on the petrol bike", "Transmisión final montada en la moto de combustión"]
+    ]
+  },
+  {
+    id: "fairing-stay",
+    title: { en: "Fairing stay", es: "Araña (fairing stay)" },
+    role: { en: "Structural department", es: "Departamento de Estructuras" },
+    dept: { en: "Structural", es: "Estructuras" },
+    text: {
+      en: `<p>The front subframe that joins the fairing to the chassis and carries the dashboard.</p>
+<ul><li>Shaped so the steering damper passes straight through the middle of the part without touching it.</li>
+<li>I also designed the steering-damper mount that clamps it to the fork tubes, visible in the assembly.</li>
+<li>Fit and packaging were checked first with a full-size 3D-printed prototype before making the sheet-metal part, with tab-and-slot joints and triangulated lightening cut-outs.</li></ul>`,
+      es: `<p>Subchasis delantero que une el carenado con el chasis y soporta el dashboard.</p>
+<ul><li>Diseñada para que el amortiguador de dirección pase por el medio de la pieza sin llegar a tocarla.</li>
+<li>También diseñé el anclaje que sujeta el amortiguador de dirección a las botellas de la horquilla, visible en el ensamblaje.</li>
+<li>El ajuste y el espacio se comprobaron primero con un prototipo impreso en 3D a tamaño real antes de fabricar la pieza en chapa, con uniones de pestaña y ranura y vaciados triangulados de aligeramiento.</li></ul>`
+    },
+    tools: ["Solidworks", "3D printing", "Sheet metal"],
+    photos: [
+      ["cad_fairing_stay.jpg", "CAD", "Fairing stay carrying the dashboard; the steering damper passes through it and is clamped to the fork tubes by my mount", "La araña soportando el dashboard; el amortiguador de dirección la atraviesa y va sujeto a las botellas con mi anclaje"],
+      ["fairing_stay_raw.jpg", "PART", "Sheet-metal fairing stay", "Araña fabricada en chapa"],
+      ["fairing_stay_prototype.jpg", "PROTOTYPE", "3D-printed prototype for fit checks", "Prototipo impreso en 3D para comprobar el ajuste"]
+    ]
+  },
+  {
+    id: "composites",
+    title: { en: "Composite moulds: airbox & intake trumpet", es: "Moldes de composite: airbox y trompeta" },
+    role: { en: "Structural department", es: "Departamento de Estructuras" },
+    dept: { en: "Structural", es: "Estructuras" },
+    text: {
+      en: `<p>I designed the moulds for the airbox and the intake trumpet.</p>
+<ul><li>Moulds were 3D-printed as split halves so the parts could be released after curing.</li>
+<li>The airbox was laid up in carbon fibre in the mould; the trumpet mould uses a separate core and base plate.</li></ul>`,
+      es: `<p>Diseñé los moldes del airbox y de la trompeta de admisión.</p>
+<ul><li>Los moldes se imprimieron en 3D partidos en mitades para poder desmoldar las piezas tras el curado.</li>
+<li>El airbox se laminó en fibra de carbono en el molde; el molde de la trompeta usa un macho y una base independientes.</li></ul>`
+    },
+    tools: ["Solidworks", "3D printing", "Carbon fibre"],
+    photos: [
+      ["airbox_layup.jpg", "PROCESS", "Carbon-fibre lay-up in the airbox moulds", "Laminado de fibra de carbono en los moldes del airbox"],
+      ["airbox_mould.jpg", "PART", "Printed airbox mould", "Molde impreso del airbox"],
+      ["airbox_part.jpg", "PART", "Part on the mould after release", "Pieza sobre el molde tras desmoldar"],
+      ["airbox_mould_part.jpg", "PART", "Mould and moulded part", "Molde y pieza moldeada"],
+      ["trumpet_mould.jpg", "PART", "Trumpet mould: split halves, core and base", "Molde de la trompeta: mitades, macho y base"],
+      ["trumpet_printed.jpg", "PROTOTYPE", "Printed intake trumpet", "Trompeta de admisión impresa"],
+      ["trumpet_cast.jpg", "PART", "Part released from the trumpet mould", "Pieza desmoldada de la trompeta"],
+      ["trumpet_mould_parts.jpg", "PROCESS", "Mould parts during preparation", "Piezas del molde durante la preparación"]
+    ]
+  },
+  {
+    id: "bushings",
+    title: { en: "Axle & transmission bushings", es: "Casquillos de eje y transmisión" },
+    role: { en: "Structural department · petrol & electric bikes", es: "Departamento de Estructuras · moto de combustión y eléctrica" },
+    dept: { en: "Structural", es: "Estructuras" },
+    text: {
+      en: `<p>Bushings and spacers for the rear axle, the suspension triangle and the transmission.</p>
+<ul><li>Designed around the bearing seats and the stack-up of wheel, carrier and swingarm to locate everything axially.</li>
+<li>Section views of the assembly were used to check fits and clearances before manufacture.</li></ul>`,
+      es: `<p>Casquillos y separadores del eje trasero, del triángulo de suspensión y de la transmisión.</p>
+<ul><li>Diseñados a partir de los alojamientos de rodamientos y del apilado llanta–portacoronas–basculante para fijar todo axialmente.</li>
+<li>Usé vistas en sección del ensamblaje para comprobar ajustes y holguras antes de fabricar.</li></ul>`
+    },
+    tools: ["Solidworks"],
+    photos: [
+      ["cad_axle_section.jpg", "CAD", "Rear axle section: bearings, bushings and spacers", "Sección del eje trasero: rodamientos, casquillos y separadores"],
+      ["cad_transmission_section.jpg", "CAD", "Transmission spacer on the motor output shaft", "Casquillo de transmisión en el eje de salida del motor"],
+      ["transmission_spacer.jpg", "PART", "Transmission spacer fitted", "Casquillo de transmisión montado"]
+    ]
+  },
+  {
+    id: "fabrication",
+    title: { en: "Welding jigs & chassis fabrication", es: "Utillajes de soldadura y fabricación de chasis" },
+    role: { en: "Structural department", es: "Departamento de Estructuras" },
+    dept: { en: "Structural", es: "Estructuras" },
+    text: {
+      en: `<p>I designed welding jigs for both motorcycles and helped build the swingarm and the chassis.</p>
+<ul><li>Jigs hold tubes and plates in position during welding, keeping pivot and mounting points in the right place.</li>
+<li>Hands-on in the workshop: fixture setup, measurement and fabrication alongside the team.</li></ul>`,
+      es: `<p>Diseñé utillajes de soldadura para las dos motos y ayudé a fabricar el basculante y el chasis.</p>
+<ul><li>Los utillajes sujetan tubos y chapas durante la soldadura para mantener los puntos de pivote y anclaje en su sitio.</li>
+<li>Trabajo en el taller: montaje de utillajes, medición y fabricación junto al equipo.</li></ul>`
+    },
+    tools: ["Solidworks", "3D printing", "Welding"],
+    photos: [
+      ["swingarm_jig.jpg", "PROCESS", "Swingarm in its welding jig", "Basculante en su utillaje de soldadura"],
+      ["chassis_weld_clamps.jpg", "PART", "Printed clamps holding chassis plates for welding", "Soportes impresos que sujetan las chapas del chasis para soldar"],
+      ["swingarm_welded.jpg", "PART", "Welded swingarm", "Basculante soldado"],
+      ["swingarm_jig_top.jpg", "PROCESS", "Swingarm jig, top view", "Utillaje del basculante, vista superior"],
+      ["chassis_jig.jpg", "PROCESS", "Chassis jig", "Utillaje del chasis"],
+      ["chassis_jig_measure.jpg", "PROCESS", "Checking positions on the chassis jig", "Comprobando posiciones en el utillaje del chasis"],
+      ["chassis_milling.jpg", "PROCESS", "Chassis fixtured on the milling machine", "Chasis amarrado en la fresadora"],
+      ["swingarm_team.jpg", "PROCESS", "Swingarm fabrication with the team", "Fabricación del basculante con el equipo"]
+    ]
+  },
+  {
+    id: "pcb",
+    title: { en: "PCB enclosures", es: "Cajas para PCB" },
+    role: { en: "Petrol & electric bikes", es: "Moto de combustión y eléctrica" },
+    dept: { en: "Electronics", es: "Electrónica" },
+    text: {
+      en: `<p>3D-printed enclosures that protect and mount the team’s electronics boards on both bikes.</p>`,
+      es: `<p>Cajas impresas en 3D que protegen y fijan las placas electrónicas del equipo en las dos motos.</p>`
+    },
+    tools: ["Solidworks", "3D printing"],
+    photos: [
+      ["pcb_print.jpg", "PART", "Enclosure fresh off the printer", "Caja recién impresa"],
+      ["pcb_installed.jpg", "PART", "Enclosure with connector and wiring", "Caja con conector y cableado"]
+    ]
+  }
+];
+</script>
+<script>
+const ALL = [];   // flat list for lightbox navigation
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const two = (en, es) => `<span lang="en">${en}</span><span lang="es">${es}</span>`;
+
+document.getElementById("index").innerHTML = PROJECTS.map((p, i) => `
+  <li><a href="#${p.id}">
+    <span class="n">${String(i + 1).padStart(2, "0")}</span>
+    <span class="t">${two(p.title.en, p.title.es)}</span>
+    <span class="d mono">${two(p.dept.en, p.dept.es)}</span>
+    <span class="b mono">${p.photos.length} ${two("photos", "fotos")}</span>
+  </a></li>`).join("");
+
+document.getElementById("projectList").innerHTML = PROJECTS.map((p, i) => `
+  <section class="project" id="${p.id}">
+    <div class="wrap">
+      <div class="p-head">
+        <div class="p-num">${String(i + 1).padStart(2, "0")}</div>
+        <div><h3>${two(p.title.en, p.title.es)}</h3><p class="role mono">${two(p.role.en, p.role.es)}</p></div>
+      </div>
+      <div class="p-body">
+        <div class="p-text">
+          <div lang="en">${p.text.en}</div><div lang="es">${p.text.es}</div>
+          <dl class="meta mono">
+            <div><dt>${two("Area", "Área")}</dt><dd><span class="chip">${two(p.dept.en, p.dept.es)}</span></dd></div>
+            <div><dt>${two("Tools", "Herram.")}</dt><dd>${p.tools.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</dd></div>
+          </dl>
+        </div>
+        <div class="gallery">
+          ${p.photos.map(([file, tag, en, es]) => {
+            const k = ALL.push({ file, tag, en, es }) - 1;
+            return `<figure>
+              <span class="tag ${tag === "CAD" ? "cad" : ""}">${tag}</span>
+              <button class="thumb" type="button" data-k="${k}" aria-label="${esc(en)}"><img src="img/${file}" alt="${esc(en)}" loading="lazy"></button>
+              <figcaption>${two(en, es)}</figcaption>
+            </figure>`;
+          }).join("")}
+        </div>
+      </div>
+    </div>
+  </section>`).join("");
+
+/* ---- lightbox ---- */
+const lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+let cur = 0, list = ALL;
+function show(k) {
+  cur = (k + list.length) % list.length;
+  const it = list[cur];
+  lbImg.src = "img/" + it.file; lbImg.alt = it.en;
+  lbCap.innerHTML = `<span class="mono">${it.tag}</span>${two(it.en, it.es)}`;
+}
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-k]");
+  if (t) { list = ALL; show(+t.dataset.k); lb.showModal(); return; }
+  if (e.target.closest("[data-lb=hero]")) {
+    list = [{ file: "cad_bike_hero.jpg", tag: "CAD", en: "Electric prototype — full-vehicle CAD assembly", es: "Prototipo eléctrico — ensamblaje CAD completo" }];
+    show(0); lb.showModal();
+  }
+});
+lb.querySelector(".close").onclick = () => lb.close();
+lb.querySelector(".prev").onclick = () => show(cur - 1);
+lb.querySelector(".next").onclick = () => show(cur + 1);
+lb.addEventListener("click", e => { if (e.target.closest(".lb-img") && e.target.tagName !== "IMG") lb.close(); });
+document.addEventListener("keydown", e => {
+  if (!lb.open) return;
+  if (e.key === "ArrowRight") show(cur + 1);
+  if (e.key === "ArrowLeft") show(cur - 1);
+});
+
+/* ---- language & theme (remembered per visitor) ---- */
+const root = document.documentElement;
+const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } },
+                set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+function setLang(l) {
+  root.dataset.lang = l; root.lang = l;
+  document.getElementById("langBtn").textContent = l === "en" ? "ES" : "EN";
+  store.set("lang", l);
+}
+setLang(store.get("lang") || ((navigator.language || "").toLowerCase().startsWith("es") ? "es" : "en"));
+document.getElementById("langBtn").onclick = () => setLang(root.dataset.lang === "en" ? "es" : "en");
+
+const savedTheme = store.get("theme");
+if (savedTheme) root.dataset.theme = savedTheme;
+document.getElementById("themeBtn").onclick = () => {
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark"; store.set("theme", root.dataset.theme);
+};
+</script>
+</body>
+</html>
