@@ -820,14 +820,14 @@ const two = (en, es) => `<span lang="en">${en}</span><span lang="es">${es}</span
 const isVid = f => f.endsWith(".mp4");
 const poster = f => f.replace(/\.mp4$/, ".jpg");
 
-function thumb([file, tag, en, es]) {
-  const k = ALL.push({ file, tag, en, es }) - 1;
+function thumb([file, tag, en, es, opt]) {
+  const k = ALL.push({ file, tag, en, es, nocap: opt === "nocap" }) - 1;
   const inner = isVid(file)
     ? `<video src="img/${file}" poster="img/${poster(file)}"${tag === "VIDEO" ? ` class="fit"` : ""} muted loop playsinline preload="none" aria-label="${esc(en)}"></video>`
     : `<img src="img/${file}" alt="${esc(en)}" loading="lazy">`;
   return `<button class="thumb" type="button" data-k="${k}" aria-label="${esc(en)}">${inner}</button>`;
 }
-// m[4] === "nocap": caption kept for alt text and lightbox, hidden under the tile
+// m[4] === "nocap": text kept only as alt text, no visible caption
 const fig = (m, i = 0, cls = "") => `<figure class="rv ${cls}" style="--i:${i % 4}">${thumb(m)}${m[4] === "nocap" ? "" : `<figcaption><span class="k">${m[1]}</span>${two(m[2], m[3])}</figcaption>`}</figure>`;
 
 // Bento: first item spans 2x2, then rows of 3. The last item is widened
@@ -938,7 +938,7 @@ function show(k) {
   lbMedia.innerHTML = isVid(it.file)
     ? `<video src="img/${it.file}" poster="img/${poster(it.file)}" controls ${still ? "" : "autoplay"} muted loop playsinline></video>`
     : `<img src="img/${it.file}" alt="${esc(it.en)}">`;
-  lbCap.innerHTML = `<span class="k">${it.tag}</span>${two(it.en, it.es)}`;
+  lbCap.innerHTML = it.nocap ? "" : `<span class="k">${it.tag}</span>${two(it.en, it.es)}`;
 }
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-k]");
